@@ -1,0 +1,16 @@
+{
+    "name": "vaimo/clemondo-markgoods",
+    "type": "magento2-module", 
+    "description": "Add field before payment and save it in order",
+    "license": "proprietary", 
+    "authors": [
+        {
+            "name": "dmytro.ushchenko",
+            "email": "dmytro.ushchenko@vaimo.com"
+        }
+    ], 
+    "require": {
+        "php": ">=7.0.0",
+        "magento/framework": ">=100.1"
+    }
+}
