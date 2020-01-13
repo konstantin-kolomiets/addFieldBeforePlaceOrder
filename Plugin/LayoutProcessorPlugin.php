@@ -24,8 +24,6 @@ class LayoutProcessorPlugin
         LayoutProcessor $subject,
         array $jsLayout
     ) {
-        $validation['required-entry'] = true;
-
         $jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
         ['payment']['children']['payments-list']['children']['before-place-order']['children']['reference_customer_attribute'] = [
             'component' => 'Magento_Ui/js/form/element/abstract',
