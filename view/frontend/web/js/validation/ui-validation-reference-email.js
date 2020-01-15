@@ -5,30 +5,32 @@
 
 define([
    'jquery',
+   'mage/translate'
 ], function ($) {
-'use strict';
+    'use strict';
 
     return function (validator) {
         validator.addRule(
             'reference-email',
-            function (value, params, additionalParams) {
-                // var customersEmails = ['asd0@gmail.com', 'asd1@gmail.com', 'asd2@gmail.com'];
-                // return $.inArray(value, customersEmails) !== -1;
-                $.ajax({
-                   url: '/example.php',
-                   type: 'post',
-                   data: value,
-                   success: function (response) {
-                       return true;
-                   },
-                   error: function(response) {
-                       return false;
-                   }
-                });
+            function (value) {
+                // function resultCallback(data) {
+                //     return data;
+                // }
+                var result = '';
 
-                // $.post('/example.php', serializedData, function(response) {
-                //     console.log("Response: "+response);
-                // });
+                $.ajax({
+                    url: 'http://devbox.vaimo.test/clemondo/ClemondoMarkGoods/referencecustomer/checkemail',
+                    type: 'post',
+                    data: {
+                       email: value
+                    },
+                    async: false,
+                    success: function(response) {
+                        result = response;
+                        // return resultCallback.call(this, response);
+                    }
+                });
+                return result;
             },
             $.mage.__("Please specify a valid reference email")
         );
