@@ -4,8 +4,7 @@
  */
 
 define([
-   'jquery',
-   'mage/translate'
+   'jquery'
 ], function ($) {
     'use strict';
 
@@ -13,11 +12,8 @@ define([
         validator.addRule(
             'reference-email',
             function (value) {
-                // function resultCallback(data) {
-                //     return data;
-                // }
                 var result = '';
-
+                $('body').trigger('processStart');
                 $.ajax({
                     url: 'http://devbox.vaimo.test/clemondo/ClemondoMarkGoods/referencecustomer/checkemail',
                     type: 'post',
@@ -27,7 +23,7 @@ define([
                     async: false,
                     success: function(response) {
                         result = response;
-                        // return resultCallback.call(this, response);
+                        $('body').trigger('processStop');
                     }
                 });
                 return result;
